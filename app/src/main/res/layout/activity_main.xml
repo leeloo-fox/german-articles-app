@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin"
+    android:orientation="vertical"
+    tools:context="com.example.android.germanarticles.MainActivity">
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_for_weighted_views"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:text="Tisch"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/question_font_size" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/answer_button_size"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_der"
+            android:layout_width="@dimen/size_for_weighted_views"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="clickDer"
+            android:text="der"
+            android:textSize="@dimen/big_font_size" />
+
+        <Button
+            android:id="@+id/button_die"
+            android:layout_width="@dimen/size_for_weighted_views"
+            android:layout_height="match_parent"
+            android:onClick="clickDie"
+            android:layout_weight="1"
+            android:text="die"
+            android:textSize="@dimen/big_font_size" />
+
+        <Button
+            android:id="@+id/button_das"
+            android:layout_width="@dimen/size_for_weighted_views"
+            android:layout_height="match_parent"
+            android:onClick="clickDas"
+            android:layout_weight="1"
+            android:text="das"
+            android:textSize="@dimen/big_font_size" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_next"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/next_button_size"
+        android:layout_marginBottom="@dimen/margin"
+        android:textSize="@dimen/small_font_size"
+        android:text="@string/next_button"
+        android:onClick="clickNext"/>
+
+    <TextView
+        android:id="@+id/correct_count"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_for_weighted_views"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/correct_count"
+        android:textSize="@dimen/big_font_size" />
+
+    <TextView
+        android:id="@+id/wrong_count"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_for_weighted_views"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/wrong_count"
+        android:textSize="@dimen/big_font_size" />
+
+    <TextView
+        android:id="@+id/total_count"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_for_weighted_views"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/total_count"
+        android:textSize="@dimen/big_font_size" />
+
+</LinearLayout>
