@@ -24,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
     Button buttonDas;
     Button buttonNext;
 
+    TextView textViewCorrect;
+    TextView textViewWrong;
+    TextView textViewTotal;
+    TextView textViewQuestion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,15 +40,16 @@ public class MainActivity extends AppCompatActivity {
         buttonDas = (Button) findViewById(R.id.button_das);
         buttonNext = (Button) findViewById(R.id.button_next);
 
-        // set counts to 0
-        display(getString(R.string.correct_count, correctAnswers), R.id.correct_count);
-        display(getString(R.string.wrong_count, wrongAnswers), R.id.wrong_count);
-        display(getString(R.string.total_count, currentQuestion, questions.length), R.id.total_count);
-    }
+        //initialize textviews
+        textViewCorrect = (TextView) findViewById(R.id.correct_count);
+        textViewWrong = (TextView) findViewById(R.id.wrong_count);
+        textViewTotal = (TextView) findViewById(R.id.total_count);
+        textViewQuestion = (TextView) findViewById(R.id.question);
 
-    private void display(String what, int viewId) {
-        TextView quantityTextView = (TextView) findViewById(viewId);
-        quantityTextView.setText(what);
+        // set counts to 0
+        textViewCorrect.setText(getString(R.string.correct_count, correctAnswers));
+        textViewWrong.setText(getString(R.string.wrong_count, wrongAnswers));
+        textViewTotal.setText(getString(R.string.total_count, currentQuestion, questions.length));
     }
 
     private void clickAnswer(int buttonClickedId) {
@@ -57,14 +63,14 @@ public class MainActivity extends AppCompatActivity {
 
         if (answers[currentQuestion] == buttonClickedId) {
             correctAnswers += 1;
-            display(getString(R.string.correct_count, correctAnswers), R.id.correct_count);
+            textViewCorrect.setText(getString(R.string.correct_count, correctAnswers));
             // color the button green
             clickedButton.setTextColor(getResources().getColor(R.color.colorCorrect));
             // create a toast "Correct"
             Toast.makeText(this, R.string.toast_corect, Toast.LENGTH_SHORT).show();
         } else {
             wrongAnswers += 1;
-            display(getString(R.string.wrong_count, wrongAnswers), R.id.wrong_count);
+            textViewWrong.setText(getString(R.string.wrong_count, wrongAnswers));
             // color the button red
             clickedButton.setTextColor(getResources().getColor(R.color.colorWrong));
             // color the correct answer green
@@ -73,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.toast_wrong, Toast.LENGTH_SHORT).show();
         }
         currentQuestion += 1;
-        display(getString(R.string.total_count, currentQuestion, questions.length), R.id.total_count);
+        textViewTotal.setText(getString(R.string.total_count, currentQuestion, questions.length));
 
         if (currentQuestion >= questions.length) {
             buttonNext.setText(getText(R.string.repeat_button));
@@ -98,9 +104,9 @@ public class MainActivity extends AppCompatActivity {
             // that's "REPEAT" button
 
             // reset counts
-            display(getString(R.string.correct_count_initial), R.id.correct_count);
-            display(getString(R.string.wrong_count_initial), R.id.wrong_count);
-            display(getString(R.string.total_count_initial), R.id.total_count);
+            textViewCorrect.setText(getString(R.string.correct_count_initial));
+            textViewWrong.setText(getString(R.string.wrong_count_initial));
+            textViewTotal.setText(getString(R.string.total_count_initial));
 
             correctAnswers = 0;
             wrongAnswers = 0;
@@ -110,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // show new question
-        display(questions[currentQuestion], R.id.question);
+        textViewQuestion.setText(questions[currentQuestion]);
 
         // enable buttons
         buttonDer.setEnabled(true);
